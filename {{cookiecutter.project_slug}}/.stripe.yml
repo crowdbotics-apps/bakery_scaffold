@@ -2,7 +2,6 @@ language: python
 
 install: 
    - pip3 install --upgrade pip
-   - pip install coveralls
    - pip install pytest
 
 script: 
