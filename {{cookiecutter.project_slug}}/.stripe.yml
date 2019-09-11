@@ -1,7 +1,4 @@
-dist: xenial   # required for Python >= 3.7
 language: python
-python:
-  - "3.7"
 
 install: 
    - pip3 install --upgrade pip 
@@ -11,9 +8,3 @@ install:
 
 script: 
  pytest test.py -v --tb=no
-
-after_success:
- - coveralls
-notifications:
-  webhooks:
-    - {{ cookiecutter.travis.host }}/api/v1/challenge/check_builds/
