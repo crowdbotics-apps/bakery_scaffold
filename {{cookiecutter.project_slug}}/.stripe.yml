@@ -1,8 +1,12 @@
 language: python
 
-install: 
+install:
    - pip3 install --upgrade pip
    - pip install pytest
+   - pip install stripe
+   - pip install selenium
+   - python -m http.server 8000 &
 
 script: 
- pytest test.py -v --tb=no
+ pytest test.py -v --tb=short
+© 2019 GitHub, Inc.
