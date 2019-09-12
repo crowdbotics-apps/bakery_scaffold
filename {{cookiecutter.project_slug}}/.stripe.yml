@@ -9,4 +9,3 @@ install:
 
 script: 
  pytest test.py -v --tb=short
-© 2019 GitHub, Inc.
