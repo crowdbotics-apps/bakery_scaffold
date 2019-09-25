@@ -26,6 +26,11 @@
       "size": "free"
     }
   },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
   "image": "heroku/python",
   "addons": []
 }
