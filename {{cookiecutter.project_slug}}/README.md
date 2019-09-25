@@ -10,11 +10,11 @@ Pass the checkout sesssion id to the order_success.html file.
 
 ## Dashboard Product
 One time purchase product
-* Product Name: Cupcake
-* SKU: TBD
-* Name: Chocolate cupcake
+* Product Name: {{cookiecutter.product}}
+* SKU: {{cookiecutter.sku}}
+* Name: {{cookiecutter.product_name}}
 * Currency: USD
-* Amount: $3.25
+* Amount: ${{cookiecutter.amount}}
 
 The repository includes the following files:
 * `/order.html`: complete this form to integrate with Checkout
