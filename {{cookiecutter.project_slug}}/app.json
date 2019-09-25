@@ -20,17 +20,10 @@
       "description": "stripe webhook secret",
     }
   },
-  "formation": {
-    "web": {
-      "quantity": 1,
-      "size": "free"
-    }
-  },
   "buildpacks": [
     {
       "url": "heroku/python"
     }
   ],
-  "image": "heroku/python",
-  "addons": []
+  "addons": ["heroku-postgresql"]
 }
