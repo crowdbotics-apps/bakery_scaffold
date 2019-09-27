@@ -5,10 +5,6 @@
     "python",
     "flask"
   ],
-  "repository": "https://github.com/raysaavedra-work/bakery_scaffold",
-  "logo": "",
-  "success_url": "/",
-  "scripts": {},
   "env": {
     "STRIPE_PUBLIC_KEY": {
       "description": "stripe public key",
@@ -18,12 +14,26 @@
     },
     "STRIPE_WEBHOOK_SECRET": {
       "description": "stripe webhook secret",
+    },
+    "STRIPE_API_VERSION": {
+      "description": "stripe api version",
+    },
+    "BASE_PRICE": {
+      "description": "base price",
+      "required": false
+    },
+    "CURRENCY": {
+      "description": "currency",
+      "required": false
+    },
+    "DOMAIN": {
+      "description": "domain",
+      "required": false
     }
   },
   "buildpacks": [
     {
       "url": "heroku/python"
     }
-  ],
-  "addons": ["heroku-postgresql"]
+  ]
 }
