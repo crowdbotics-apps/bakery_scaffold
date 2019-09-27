@@ -60,6 +60,9 @@
 
   var checkoutButton = document.getElementById('checkout-button-sku_Fg6RQOAN2Tu58m');
   var createCheckoutSession = function(stripe) {
+      var amount = "{{ cookiecutter.amount }}";
+      var product = "{{ cookiecutter.product }}";
+      amount = amount.toString().replace(".", "");
 
       return fetch("/create-checkout-session", {
         method: "POST",
@@ -69,9 +72,9 @@
         body: JSON.stringify({
           quantity: 1,
           img: '/static/img/cupcake.jpg',
-          amount: 325,
+          amount: parseInt(amount),
           currency: 'usd',
-          name: 'Cupcake'
+          name: product
         })
       }).then(function(result) {
         return result.json();
