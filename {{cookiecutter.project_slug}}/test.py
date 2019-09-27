@@ -1,5 +1,12 @@
+import os
 import re
 import unittest
+
+import selenium
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class TestAcceptanceStripe(unittest.TestCase):
@@ -59,6 +66,6 @@ class TestAcceptanceStripe(unittest.TestCase):
         res = re.search(pattern, self.dom_str)
         self.assertTrue(hasattr(res, 'group'), msg="You didn't define a cancel URL.")
 
-
+ 
 if __name__ == '__main__':
     unittest.main()
