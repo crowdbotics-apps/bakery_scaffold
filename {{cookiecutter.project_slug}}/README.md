@@ -13,7 +13,7 @@ Pass the checkout sesssion id to the order_success.html file.
 ## Dashboard Product
 One time purchase product
 * Product Name: {{ cookiecutter.product }}
-* SKU: {{ cookiecutter.sku }}
+* SKU: Will be added later
 * Name: {{ cookiecutter.product_name }}
 * Currency: USD
 * Amount: ${{ cookiecutter.amount }}
