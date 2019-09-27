@@ -18,14 +18,6 @@
     "STRIPE_API_VERSION": {
       "description": "stripe api version",
     },
-    "BASE_PRICE": {
-      "description": "base price",
-      "required": false
-    },
-    "CURRENCY": {
-      "description": "currency",
-      "required": false
-    },
     "DOMAIN": {
       "description": "domain",
     }

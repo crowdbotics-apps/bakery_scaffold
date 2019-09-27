@@ -21,23 +21,6 @@ def order():
 def success():
     return render_template('order_success.html')
 
-
-@app.route('/config', methods=['GET'])
-def get_public_key():
-    return jsonify({
-      'publicKey': os.getenv('STRIPE_PUBLIC_KEY'),
-      'basePrice': os.getenv('BASE_PRICE'),
-      'currency': os.getenv('CURRENCY')
-    })
-
-
-@app.route('/checkout-session', methods=['GET'])
-def get_checkout_session():
-    id = request.args.get('sessionId')
-    checkout_session = stripe.checkout.Session.retrieve(id)
-    return jsonify(checkout_session)
-
-
 @app.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():
     data = json.loads(request.data)
