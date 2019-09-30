@@ -56,8 +56,7 @@
 <div id="error-message"></div>
 
 <script>
-  var stripePublicKey = '{{public_key}}';
-  var stripe = Stripe(stripePublicKey);
+  var stripe = Stripe('{{ cookiecutter.public_key }}');
 
   var checkoutButton = document.getElementById('checkout-button');
   var createCheckoutSession = function(stripe) {
