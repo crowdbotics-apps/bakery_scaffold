@@ -93,7 +93,7 @@ def webhook_received():
     res = {
         'status': 'succeeded',
         'amount_received': data_object['amount_received'],
-        'id': data_object['id']
+        'id': request_data['id']
     }
 
     file.write(json.dumps(res))
