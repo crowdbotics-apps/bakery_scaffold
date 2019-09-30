@@ -15,11 +15,7 @@ app = Flask(__name__, template_folder='client')
 
 @app.route('/')
 def order():
-    try:
-        stripe_publicKey=os.getenv('STRIPE_PUBLIC_KEY')
-    except:
-        stripe_publicKey = ''
-    return render_template('order.html', stripe_publicKey=stripe_publicKey)
+    return render_template('order.html')
 
 @app.route('/order_success')
 def success():
