@@ -7,19 +7,19 @@
   ],
   "env": {
     "STRIPE_PUBLIC_KEY": {
-      "description": "stripe public key",
+      "description": "stripe public key"
     },
     "STRIPE_SECRET_KEY": {
-      "description": "stripe secret key",
+      "description": "stripe secret key"
     },
     "STRIPE_WEBHOOK_SECRET": {
-      "description": "stripe webhook secret",
+      "description": "stripe webhook secret"
     },
     "STRIPE_API_VERSION": {
-      "description": "stripe api version",
+      "description": "stripe api version"
     },
     "DOMAIN": {
-      "description": "domain",
+      "description": "domain"
     },
     "CHROMEDRIVER_PATH": {
       "description": "CHROMEDRIVER_PATH",
@@ -28,7 +28,7 @@
     "GOOGLE_CHROME_BIN": {
       "description": "CHROME_BIN",
       "value": "/app/.apt/usr/bin/google_chrome"
-    },
+    }
   },
   "buildpacks": [
     {
@@ -37,7 +37,6 @@
     {
       "url": "https://github.com/heroku/heroku-buildpack-chromedriver"
     },
-    ,
     {
       "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
     }
