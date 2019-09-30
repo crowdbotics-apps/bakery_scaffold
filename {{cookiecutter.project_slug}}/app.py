@@ -24,7 +24,7 @@ def success():
 @app.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():
     data = json.loads(request.data)
-    domain_url = os.getenv('DOMAIN')
+    amount = str(data['amount']).replace('.', '')
 
     try:
         checkout_session = stripe.checkout.Session.create(
@@ -37,7 +37,7 @@ def create_checkout_session():
                     "images": [domain_url + data['img']],
                     "quantity": data['quantity'],
                     "currency": data['currency'],
-                    "amount": int(data['amount'])
+                    "amount": amount,
                 }
             ]
         )
@@ -55,7 +55,10 @@ def webhook_received():
         signature = request.headers.get('stripe-signature')
         try:
             event = stripe.Webhook.construct_event(
-                payload=request.data, sig_header=signature, secret=webhook_secret)
+                payload=request.data,
+                sig_header=signature,
+                secret=webhook_secret
+            )
             data = event['data']
         except Exception as e:
             return e
@@ -65,17 +68,16 @@ def webhook_received():
         event_type = request_data['type']
     data_object = data['object']
 
-    if event_type == 'payment_intent.failed' or \
-        data_object['status'] != 'succeeded':
-            return jsonify({
-                'status': 'failed',
-                'amount_received': None,
-            }), 200
+    if event_type == 'payment_intent.failed' or data_object['status'] != 'succeeded':
+        return jsonify({
+            'status': 'failed',
+            'amount_received': None,
+        }), 200
 
     return jsonify({
-                'status': 'succeeded',
-                'amount_received': data_object['amount_received'],
-            }), 200
+        'status': 'succeeded',
+        'amount_received': data_object['amount_received'],
+    }), 200
 
 
 if __name__ == '__main__':

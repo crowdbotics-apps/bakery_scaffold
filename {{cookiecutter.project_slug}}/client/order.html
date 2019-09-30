@@ -62,7 +62,6 @@
   var createCheckoutSession = function(stripe) {
       var amount = "{{ cookiecutter.amount }}";
       var product = "{{ cookiecutter.product }}";
-      amount = amount.toString().replace(".", "");
 
       return fetch("/create-checkout-session", {
         method: "POST",
@@ -82,22 +81,21 @@
   };
 
   var handleResult = function(result) {
-        console.log(result)
-      if (result.error) {
-        var displayError = document.getElementById("error-message");
-        displayError.textContent = result.error.message;
-      }
-    };
+    if (result.error) {
+      var displayError = document.getElementById("error-message");
+      displayError.textContent = result.error.message;
+    }
+  };
 
 
   checkoutButton.addEventListener('click', function () {
     createCheckoutSession().then(function(data) {
-        stripe
-          .redirectToCheckout({
-            sessionId: data.sessionId
-          })
-          .then(handleResult);
-      });
+      stripe
+        .redirectToCheckout({
+          sessionId: data.sessionId
+        })
+        .then(handleResult);
+    });
   });
 </script>
 

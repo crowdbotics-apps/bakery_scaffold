@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "4636bd88ea61e156616bb9a914b6270daf0993b6590a95cbaf3656586e82dfe6"
+            "sha256": "ca4825fb46913c91c908fcd73c183ad259a5eebb7e019efa2bb0bb05918f8bb4"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -123,13 +123,21 @@
             "markers": "python_version >= '3.0'",
             "version": "==2.22.0"
         },
-        "stripe": {
+        "selenium": {
             "hashes": [
-                "sha256:f5b27b45bb5d7fe8c7e524a2bd4372fbf32e5e2d42aafa8e84802801faff28d2",
-                "sha256:f80e76dc17ead135a992fd9b03ee4ef3a49a958501d482f8fd11431ba3287870"
+                "sha256:2d7131d7bc5a5b99a2d9b04aaf2612c411b03b8ca1b1ee8d3de5845a9be2cb3c",
+                "sha256:deaf32b60ad91a4611b98d8002757f29e6f2c2d5fcaf202e1c9ad06d6772300d"
             ],
             "index": "pypi",
-            "version": "==2.36.2"
+            "version": "==3.141.0"
+        },
+        "stripe": {
+            "hashes": [
+                "sha256:521c7c516cc828fcbd7357b7dcb57c64c38b73b4e3b9201a83b42c093dd91f8f",
+                "sha256:de7792c863f2cd44d504bfda74eed09cb8794c7ef78fa83b66ef9addc030c765"
+            ],
+            "index": "pypi",
+            "version": "==2.37.1"
         },
         "urllib3": {
             "hashes": [
