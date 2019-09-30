@@ -46,6 +46,14 @@ def create_checkout_session():
         return jsonify(e), 40
 
 
+@app.route('/payment_intent', methods=['GET'])
+def payment_intent():
+    f = open("tmp/payment_intent", "r")
+
+    content = f.read()
+    return jsonify(json.loads(content))
+
+
 @app.route('/webhook', methods=['POST'])
 def webhook_received():
     webhook_secret = os.getenv('STRIPE_WEBHOOK_SECRET')
@@ -68,11 +76,25 @@ def webhook_received():
         event_type = request_data['type']
     data_object = data['object']
 
+    file = open('tmp/payment_intent', 'w+')
+
     if event_type == 'payment_intent.failed' or data_object['status'] != 'succeeded':
-        return jsonify({
-            'status': 'failed',
-            'amount_received': None,
-        }), 200
+            res = {
+                'status': 'failed',
+                'amount_received': None,
+            }
+
+            file.write(json.dumps(res))
+            file.close()
+            return jsonify(res), 200
+
+    res = {
+        'status': 'succeeded',
+        'amount_received': data_object['amount_received'],
+    }
+
+    file.write(json.dumps(res))
+    file.close()
 
     return jsonify({
         'status': 'succeeded',
