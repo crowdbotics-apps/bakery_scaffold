@@ -62,6 +62,7 @@
   var createCheckoutSession = function(stripe) {
       var amount = "{{ cookiecutter.amount }}";
       var product = "{{ cookiecutter.product }}";
+      amount = amount.toString().replace(".", "");
 
       return fetch("/create-checkout-session", {
         method: "POST",
