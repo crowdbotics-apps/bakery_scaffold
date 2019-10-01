@@ -62,7 +62,6 @@
   var createCheckoutSession = function(stripe) {
       var amount = "{{ cookiecutter.amount }}";
       var product = "{{ cookiecutter.product }}";
-      amount = amount.toString().replace(".", "");
 
       return fetch("/create-checkout-session", {
         method: "POST",
@@ -72,7 +71,7 @@
         body: JSON.stringify({
           quantity: 1,
           img: '/static/img/cupcake.jpg',
-          amount: parseInt(amount),
+          amount: amount,
           currency: 'usd',
           name: product
         })

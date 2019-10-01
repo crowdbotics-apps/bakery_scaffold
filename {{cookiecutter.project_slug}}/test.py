@@ -21,7 +21,7 @@ class TestAcceptanceStripe(unittest.TestCase):
     def test_acceptance_stripe_public_key_env_has_been_set_in_order_html(self):
         """Check if Stripe public key env was defined in order.html."""
         pattern = re.compile(
-            r"Stripe\('pk_test_\w+'\);",
+            r"Stripe\((\"|')pk_test_\w+(\"|')\);",
             re.I | re.M
         )
         res = re.search(pattern, self.order_html_str)
@@ -34,7 +34,7 @@ class TestAcceptanceStripe(unittest.TestCase):
     def test_acceptance_stripe_public_key_env_has_been_set_in_app_py(self):
         """Check if Stripe public key env was defined in app.py."""
         pattern = re.compile(
-            r"stripe.api_key = 'pk_test_\w+'",
+            r"stripe.api_key = (\"|')pk_test_\w+(\"|')",
             re.I | re.M
         )
         res = re.search(pattern, self.app_py_str)
@@ -47,7 +47,7 @@ class TestAcceptanceStripe(unittest.TestCase):
     def test_acceptance_stripe_script_has_been_inserted(self):
         """Check if Stripe script was inserted."""
         pattern = re.compile(
-            r'<script src="https://js.stripe.com/v3"></script>',
+            r"<script src=(\"|')https://js.stripe.com/v3(\"|')></script>",
             re.I | re.M
         )
         res = re.search(pattern, self.order_html_str)
@@ -60,7 +60,7 @@ class TestAcceptanceStripe(unittest.TestCase):
     def test_acceptance_checkout_button_was_instantiated(self):
         """Check if checkout button was captured."""
         pattern = re.compile(
-            r"document.getElementById\('checkout-button-sku_\w{14}'\);",
+            r"document.getElementById\((\"|')checkout-button-sku_\w{14}(\"|')\);",
             re.I | re.M
         )
 
@@ -73,7 +73,7 @@ class TestAcceptanceStripe(unittest.TestCase):
     def test_acceptance_product_defined_on_checkout(self):
         """Check if product was defined on checkout."""
         pattern = re.compile(
-            r"product = \"Chocolate Cupcake \w{5}\"",
+            r"product = (\"|')Chocolate Cupcake \w{5}(\"|')",
             re.I | re.M
         )
         res_var = re.search(pattern, self.order_html_str)
@@ -125,7 +125,7 @@ class TestAcceptanceStripe(unittest.TestCase):
     def test_acceptance_success_url(self):
         """Check if success_url redirects to the /order_success route"""
         pattern = re.compile(
-            r"success_url=domain_url \+ \"/order_success\?session_id={CHECKOUT_SESSION_ID}\"",
+            r"success_url=domain_url \+ (\"|')/order_success\?session_id={CHECKOUT_SESSION_ID}(\"|')",
             re.I | re.M
         )
         res = re.search(pattern, self.app_py_str)
@@ -138,7 +138,7 @@ class TestAcceptanceStripe(unittest.TestCase):
     def test_acceptance_cancel_url(self):
         """Check if cancel_url redirects to the index route"""
         pattern = re.compile(
-            r"cancel_url=domain_url \+ \"/\"",
+            r"cancel_url=domain_url \+ (\"|')/(\"|')",
             re.I | re.M
         )
         res = re.search(pattern, self.app_py_str)

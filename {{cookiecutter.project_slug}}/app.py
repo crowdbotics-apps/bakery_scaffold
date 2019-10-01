@@ -80,15 +80,15 @@ def webhook_received():
     file = open('tmp/payment_intent', 'w+')
 
     if event_type == 'payment_intent.failed' or data_object['status'] != 'succeeded':
-            res = {
-                'status': 'failed',
-                'amount_received': None,
-                'id': None
-            }
+        res = {
+            'status': 'failed',
+            'amount_received': None,
+            'id': None
+        }
 
-            file.write(json.dumps(res))
-            file.close()
-            return jsonify(res), 200
+        file.write(json.dumps(res))
+        file.close()
+        return jsonify(res), 200
 
     res = {
         'status': 'succeeded',
