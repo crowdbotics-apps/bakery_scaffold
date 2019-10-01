@@ -56,7 +56,7 @@
 <div id="error-message"></div>
 
 <script>
-  var stripe = Stripe('{{ api_key }}');
+  var stripe = Stripe('{% raw %}{{ api_key }}{% endraw %}');
 
   var checkoutButton = document.getElementById('checkout-button');
   var createCheckoutSession = function(stripe) {
