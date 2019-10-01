@@ -15,7 +15,7 @@ app = Flask(__name__, template_folder='client')
 
 @app.route('/')
 def order():
-    api_key = os.getenv('STRIPE_SECRET_KEY')
+    api_key = os.getenv('STRIPE_PUBLIC_KEY')
     return render_template('order.html', api_key=api_key)
 
 @app.route('/order_success')
