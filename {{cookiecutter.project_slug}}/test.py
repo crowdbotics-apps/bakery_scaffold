@@ -92,7 +92,7 @@ class TestAcceptanceStripe(unittest.TestCase):
     def test_amount_defined_on_checkout(self):
         """Check if amount was defined on checkout."""
         pattern = re.compile(
-            r"-?(?:0|[1-9]\d{0,2}(?:,?\d{3})*)(?:\.\d{1,2})?",
+            r"amount = -?(?:0|[1-9]\d{0,2}(?:,?\d{3})*)(?:\.\d{1,2})?",
             re.I | re.M
         )
         res_var = re.search(pattern, self.order_html_str)

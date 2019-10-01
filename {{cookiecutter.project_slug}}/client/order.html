@@ -60,7 +60,7 @@
 
   var checkoutButton = document.getElementById('checkout-button');
   var createCheckoutSession = function(stripe) {
-      var amount = "{{ cookiecutter.amount }}";
+      var amount = {{ cookiecutter.amount }};
       var product = "{{ cookiecutter.product }}";
 
       return fetch("/create-checkout-session", {
