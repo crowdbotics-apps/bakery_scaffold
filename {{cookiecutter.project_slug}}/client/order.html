@@ -61,6 +61,7 @@
   var createCheckoutSession = function(stripe) {
       var amount = {{ cookiecutter.amount }};
       var product = "{{ cookiecutter.product }}";
+      amount = Math.round(amount.toFixed(2)*100)
 
       return fetch("/create-checkout-session", {
         method: "POST",
@@ -70,7 +71,7 @@
         body: JSON.stringify({
           quantity: 1,
           img: '/static/img/cupcake.jpg',
-          amount: Math.round(amount.toFixed(2)*100),
+          amount: amount,
           currency: 'usd',
           name: product
         })
