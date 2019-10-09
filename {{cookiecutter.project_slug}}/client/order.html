@@ -70,7 +70,7 @@
         body: JSON.stringify({
           quantity: 1,
           img: '/static/img/cupcake.jpg',
-          amount: amount,
+          amount: Math.round(amount.toFixed(2)*100),
           currency: 'usd',
           name: product
         })

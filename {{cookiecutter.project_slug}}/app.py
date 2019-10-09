@@ -25,7 +25,7 @@ def success():
 @app.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():
     data = json.loads(request.data)
-    amount = str(data['amount']).replace('.', '')
+    amount = data['amount']
     domain_url = os.getenv('DOMAIN')
 
     try:
@@ -39,13 +39,13 @@ def create_checkout_session():
                     "images": [domain_url + data['img']],
                     "quantity": data['quantity'],
                     "currency": data['currency'],
-                    "amount": amount,
+                    "amount": int(amount),
                 }
             ]
         )
         return jsonify({'sessionId': checkout_session['id']})
     except Exception as e:
-        return jsonify(e), 40
+        return jsonify(e.json_body), 40
 
 
 @app.route('/payment_intent', methods=['GET'])
